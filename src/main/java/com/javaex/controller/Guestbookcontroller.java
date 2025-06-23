@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Guestbookcontroller {
 
 	//필드
-	
 	//생성자
-	
 	//메소드 gs
-	
 	//메소드일반
 	@RequestMapping(value="/aaa",method= {RequestMethod.GET,RequestMethod.POST})
 	public String test() {

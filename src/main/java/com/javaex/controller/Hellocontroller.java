@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Hellocontroller {
 	
 	//필드
-	
 	//생성자
-
-	//메소드gs
-	
+	//메소드gs	
 	//메소드일반
 	@RequestMapping(value="/user/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String select() {
