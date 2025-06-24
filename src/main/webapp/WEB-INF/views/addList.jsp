@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<form>
+			<table border="1" width="540px">
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="" value=""></td>
+
+					<td>비밀번호</td>
+					<td><input type="password" name="" value=""></td>
+				</tr>
+				<tr>
+					<td colspan="4"><textarea cols="72" rows="5"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<button type="">등록</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+
+
+		<c:forEach iteams="${requestScope.glist} " var = "gusetbookVO">
+			<table border="1" width="540px">
+				<tr>
+					<td>[${guestbookVO.no}]</td>
+					<td>${guestbookVO.name}</td>
+					<td>${guestbookVO.regdate}</td>
+					
+					<td>
+						<a href="">삭제</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">${guestbookVO.content}</td>
+				</tr>
+			</table>
+			<br>
+		</c:forEach>
+
+		
+	</body>
+</html>
