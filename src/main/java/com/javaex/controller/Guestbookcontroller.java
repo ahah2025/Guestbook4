@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestbookDAO;
 import com.javaex.vo.GuestbookVO;
@@ -44,6 +45,7 @@ public class Guestbookcontroller {
 	public String add(@ModelAttribute GuestbookVO guestbookVO) {
 					  //DispatcherServlet 야!!  Request 파라미터 값을 꺼내서
 					  //GuestbookVO로 묶어줘	
+		System.out.println("add");
 		
 		/*DispatcherServlet 가 하는 일
 		1)파라미터의 값을 꺼낸다
@@ -94,4 +96,25 @@ public class Guestbookcontroller {
 		return "";
 	}
 	*/
+	
+	//삭제폼(삭제랑 헷갈리지 말것) 폼만 보여주면 됨
+	@RequestMapping(value="rform",method = {RequestMethod.GET,RequestMethod.POST})
+	public String removeForm() {
+		System.out.println("Guestbookcontroller.removeForm()");
+
+		return "/WEB-INF/views/removeform.jsp";
+	}
+	
+	//삭제
+	@RequestMapping(value="remove",method = {RequestMethod.GET,RequestMethod.POST})
+	public String remove(@ModelAttribute GuestbookVO guestbookVO) {
+		System.out.println("Guestbookcontroller.remove()");
+		System.out.println(guestbookVO);
+		
+		GuestbookDAO guestbookDAO = new GuestbookDAO();
+		int count = guestbookDAO.guestbookDelete(guestbookVO);
+		System.out.println(count);
+		
+		return "";
+	}
 }

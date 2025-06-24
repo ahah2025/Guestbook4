@@ -37,8 +37,8 @@
 		<c:forEach items="${requestScope.glist} " var="gusetbookVO">
 			<table border="1" width="540px">
 				<tr>
-					<td></td>
-					<td>${gusetbookVO.name}</td>
+					<td>${gusetbookVO.no}</td>
+					<td>${gusetbookVO.Name}</td>
 					<td>${gusetbookVO.regdate}</td>
 					
 					<td>
