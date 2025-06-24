@@ -30,7 +30,7 @@
 		<br>
 
 
-		<c:forEach iteams="${requestScope.glist} " var = "gusetbookVO">
+		<c:forEach items="${requestScope.glist} " var = "gusetbookVO">
 			<table border="1" width="540px">
 				<tr>
 					<td>[${guestbookVO.no}]</td>
