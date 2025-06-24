@@ -19,7 +19,7 @@
 				</tr>
 				
 			</table>
-			<input type="text" name="no" value="3">
+		
 		</form>	
 		
 		<br><br>
