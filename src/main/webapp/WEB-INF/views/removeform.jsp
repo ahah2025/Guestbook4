@@ -8,18 +8,21 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<table border="1" width="540px">
-			<tr>	
-				<td>비밀번호</td>
-				<td><input type="password" name="password" value=""></td>
-			</tr>
-		</table>	
-		<table>
-			<tr>
-				<td>
-					<a href="">삭제</a>
-				</td>
-			</tr>
-		</table>
+		<form>
+			<table>
+				<tr>	
+					<td>비밀번호</td>
+					<td><input type="password" name="password" value=""></td>
+					<td>
+						<button type="">삭제</button>
+					</td>
+				</tr>
+				
+			</table>
+			<input type="text" name="no" value="3">
+		</form>	
+		
+		<br><br>
+		<a href="">메인으로 돌아가기</a>
 	</body>
 </html>

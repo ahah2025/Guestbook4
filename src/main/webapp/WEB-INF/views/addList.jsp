@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form action="http://localhost:8888/guestbook4/add" method="get">
+		<form action="${pageContext.request.contextPath}/add" method="get">
 			<table border="1" width="540px">
 				<tr>
 					<td>이름</td>
@@ -32,17 +32,17 @@
 		<c:if test="${true}">
 			${requestScope.glist}
 		</c:if>
+		${requestScope.gList}
 		
-
-		<c:forEach items="${requestScope.glist} " var="gusetbookVO">
+		<c:forEach items="${requestScope.gList} " var="gusetbookVO">
 			<table border="1" width="540px">
 				<tr>
-					<td>${gusetbookVO.no}</td>
-					<td>${gusetbookVO.Name}</td>
+					<td>[${gusetbookVO.no}]</td>
+					<td>${gusetbookVO.name}</td>
 					<td>${gusetbookVO.regdate}</td>
 					
 					<td>
-						<a href="">삭제</a>
+						<a href="${pageContext.request.contextPath}/rform?no=${gusetbookVO.no}">삭제</a>
 					</td>
 				</tr>
 				<tr>
@@ -51,7 +51,6 @@
 			</table>
 			<br>
 		</c:forEach>
-
 		
 	</body>
 </html>

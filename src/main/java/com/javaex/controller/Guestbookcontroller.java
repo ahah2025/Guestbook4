@@ -102,7 +102,7 @@ public class Guestbookcontroller {
 	public String removeForm() {
 		System.out.println("Guestbookcontroller.removeForm()");
 
-		return "/WEB-INF/views/removeform.jsp";
+		return "removeform";
 	}
 	
 	//삭제
@@ -113,8 +113,7 @@ public class Guestbookcontroller {
 		
 		GuestbookDAO guestbookDAO = new GuestbookDAO();
 		int count = guestbookDAO.guestbookDelete(guestbookVO);
-		System.out.println(count);
 		
-		return "";
+		return "redirect:/list";
 	}
 }
