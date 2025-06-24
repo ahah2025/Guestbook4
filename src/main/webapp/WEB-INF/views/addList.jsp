@@ -8,34 +8,38 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form>
+		<form action="http://localhost:8888/guestbook4/add" method="get">
 			<table border="1" width="540px">
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="" value=""></td>
+					<td><input type="text" name="name" value=""></td>
 
 					<td>비밀번호</td>
-					<td><input type="password" name="" value=""></td>
+					<td><input type="password" name="password" value=""></td>
 				</tr>
 				<tr>
-					<td colspan="4"><textarea cols="72" rows="5"></textarea></td>
+					<td colspan="4"><textarea cols="72" rows="5" name="content"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button type="">등록</button>
+						<button type="submit">등록</button>
 					</td>
 				</tr>
 			</table>
 		</form>
 		<br>
+		
+		<c:if test="${true}">
+			${requestScope.glist}
+		</c:if>
+		
 
-
-		<c:forEach items="${requestScope.glist} " var = "gusetbookVO">
+		<c:forEach items="${requestScope.glist} " var="gusetbookVO">
 			<table border="1" width="540px">
 				<tr>
-					<td>[${guestbookVO.no}]</td>
-					<td>${guestbookVO.name}</td>
-					<td>${guestbookVO.regdate}</td>
+					<td></td>
+					<td>${gusetbookVO.name}</td>
+					<td>${gusetbookVO.regdate}</td>
 					
 					<td>
 						<a href="">삭제</a>

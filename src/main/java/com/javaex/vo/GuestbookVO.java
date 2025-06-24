@@ -2,16 +2,17 @@ package com.javaex.vo;
 
 public class GuestbookVO {
 
-	//필드
+	// 필드
 	private int no;
 	private String name;
 	private String password;
 	private String content;
 	private String regDate;
 
-	//생성자
-	public GuestbookVO() {	}
-	
+	// 생성자
+	public GuestbookVO() {
+	}
+
 	public GuestbookVO(String name, String password, String content) {
 		this.name = name;
 		this.password = password;
@@ -25,8 +26,8 @@ public class GuestbookVO {
 		this.content = content;
 		this.regDate = regDate;
 	}
-	
-	//메소드gs
+
+	// 메소드gs
 	public int getNo() {
 		return no;
 	}
@@ -67,12 +68,10 @@ public class GuestbookVO {
 		this.regDate = regDate;
 	}
 
-	//메소드 일반
 	@Override
 	public String toString() {
 		return "GuestbookVO [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content
 				+ ", regDate=" + regDate + "]";
 	}
 
-	
 }

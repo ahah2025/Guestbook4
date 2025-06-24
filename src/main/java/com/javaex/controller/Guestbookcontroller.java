@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestbookDAO;
 import com.javaex.vo.GuestbookVO;
@@ -41,6 +41,43 @@ public class Guestbookcontroller {
 	
 	//-방명록 글 저장
 	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
+	public String add(@ModelAttribute GuestbookVO guestbookVO) {
+					  //DispatcherServlet 야!!  Request 파라미터 값을 꺼내서
+					  //GuestbookVO로 묶어줘	
+		
+		/*DispatcherServlet 가 하는 일
+		1)파라미터의 값을 꺼낸다
+		name=정우성				setName
+		password=1234           setPassword
+		content=abcdefghijk		setContent
+		
+		2)GuestbookVO 메모리에 올린다(기본 생성자 사용)---> GuestbookVO에 디폴트 생성자를 없애면 오류 생김
+		GuestbookVO guestbookVO = new GuestbookVO();
+			
+		3)Setter로 값을 넣는다
+		name=정우성   		 -->  setName   	 
+		password=1234        -->  setPassword
+		content=abcdefghijk	 -->  setContent
+			
+		4) DispatcherServlet는 add(guestbookVO) 실행한다
+			
+		url 파라미터이름과 VO 필드 이름을 같게 만든다
+		*/
+		System.out.println(guestbookVO);
+		GuestbookDAO guestbookDAO = new GuestbookDAO();
+		int count = guestbookDAO.guestbookInsert(guestbookVO);
+		System.out.println(count);
+		
+		//리다이렉트 하는 방법 "redirect:" 앞쪽에 써준다
+		//http://localhost:8888/guestbook4/list
+		return "redirect:/list";
+		
+	}
+	
+	
+	
+	/* 묶어서 하는것 아님!!! "하나씩 기재"
+	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
 	public String add(@RequestParam(value="name")String name, 
 					  @RequestParam(value="password")String password,
 					  @RequestParam(value="content")String content) {
@@ -48,12 +85,13 @@ public class Guestbookcontroller {
 		//DispatcherServlet 야!! 파라미터 영역의 name 인 값을 꺼내줘!!
 		System.out.println("Guestbookcontroller.add()");
 
-		System.out.println(name);
+		GuestbookVO guestbookVO = new GuestbookVO();
+		guestbookVO.setName(name);
+		guestbookVO.setPassword(password);
+		guestbookVO.setContent(content);
 		
-		//DispatcherServlet 야!! 파라미터 영역의 password 인 값을 꺼내줘!!
-		System.out.println(password);
-		System.out.println(content);
-		
+		System.out.println(guestbookVO);
 		return "";
 	}
+	*/
 }
