@@ -8,20 +8,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.javaex.vo.GuestbookVO;
 
+@Repository
 public class GuestbookDAO {
+
+	@Autowired
+	private SqlSession sqlSession;
 
 	// 필드
 	// 0. import java.sql.*;
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-
-	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost:3306/guestbook_db";
-	private String id = "guestbook";
-	private String pw = "guestbook";
 
 	private void getConnection() {
 		try {
@@ -104,25 +106,25 @@ public class GuestbookDAO {
 		this.getConnection();
 
 			try {
-
-			// 3. SQL문 준비 / 바인딩 / 실행
-			// SQL문 준비
-			String query = "";
-			query += " insert into guestbook ";
-			query += " values (null, ?, ?, ?, now()) ";
-
-			// 바인딩
-			pstmt = conn.prepareStatement(query);
-
-			pstmt.setString(1, guestbookVO.getName());
-			pstmt.setString(2, guestbookVO.getPassword());
-			pstmt.setString(3, guestbookVO.getContent());
-
-			// 실행
-			count = pstmt.executeUpdate();
-
-			// 4.결과처리			
-			System.out.println(count + "건 등록");
+	
+				// 3. SQL문 준비 / 바인딩 / 실행
+				// SQL문 준비
+				String query = "";
+				query += " insert into guestbook ";
+				query += " values (null, ?, ?, ?, now()) ";
+	
+				// 바인딩
+				pstmt = conn.prepareStatement(query);
+	
+				pstmt.setString(1, guestbookVO.getName());
+				pstmt.setString(2, guestbookVO.getPassword());
+				pstmt.setString(3, guestbookVO.getContent());
+	
+				// 실행
+				count = pstmt.executeUpdate();
+	
+				// 4.결과처리			
+				System.out.println(count + "건 등록");
 
 			} catch (SQLException e) {
 				System.out.println("error:" + e);

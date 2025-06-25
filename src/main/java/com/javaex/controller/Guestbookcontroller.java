@@ -2,20 +2,23 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javaex.dao.GuestbookDAO;
+import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestbookVO;
 
 @Controller
 public class Guestbookcontroller {
 
 	//필드
+	@Autowired
+	private GuestbookService guestbookService;
+	
 	//생성자
 	//메소드 gs
 	//메소드일반
@@ -24,28 +27,32 @@ public class Guestbookcontroller {
 	public String list(Model model) {
 		System.out.println("Guestbookcontroller.list()");
 		
-		GuestbookDAO guestbookDAO = new GuestbookDAO();
-		List<GuestbookVO> guestbooklist = guestbookDAO.guestbookSelect();
-		System.out.println(guestbooklist);
+		//service
+		
+		
+		//guestbookService 메모리에 올려주세요
+		//주소 0x333 주입 해주세요
+		//GuestbookService guestbookService = new GuestbookService();
+		List<GuestbookVO> guestbookList = guestbookService.exeGetGuestbookList();
 		
 		//*Model개념
 		//DispatcherServlet 야!!
 		//request의 어트리뷰트영역에
 		//"gList" 이름으로 0x333(guestbookList) 을 넣어줘
-		model.addAttribute("glist",guestbooklist);
+		model.addAttribute("glist",guestbookList);
 		
 		//*views 개념
 		//DispatcherServlet 야!!
 		// "/WEB-INF/views/addlist.jsp" 에 포워드해
-		return "/WEB-INF/views/addList.jsp";
+		return "addList";
 	}
 	
 	//-방명록 글 저장
-	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="add",method= {RequestMethod.GET,RequestMethod.POST})
 	public String add(@ModelAttribute GuestbookVO guestbookVO) {
 					  //DispatcherServlet 야!!  Request 파라미터 값을 꺼내서
 					  //GuestbookVO로 묶어줘	
-		System.out.println("add");
+		System.out.println("Guestbookcontroller.add()");
 		
 		/*DispatcherServlet 가 하는 일
 		1)파라미터의 값을 꺼낸다
@@ -65,17 +72,17 @@ public class Guestbookcontroller {
 			
 		url 파라미터이름과 VO 필드 이름을 같게 만든다
 		*/
-		System.out.println(guestbookVO);
-		GuestbookDAO guestbookDAO = new GuestbookDAO();
-		int count = guestbookDAO.guestbookInsert(guestbookVO);
-		System.out.println(count);
+		///////////////////////////////////////////////////////////
+		
+		//Service 한테 시키는 일
+		//GuestbookService guestbookService = new GuestbookService();
+		guestbookService.exeGuestbookAdd(guestbookVO);
+		
 		
 		//리다이렉트 하는 방법 "redirect:" 앞쪽에 써준다
 		//http://localhost:8888/guestbook4/list
 		return "redirect:/list";
-		
 	}
-	
 	
 	
 	/* 묶어서 하는것 아님!!! "하나씩 기재"
@@ -111,8 +118,8 @@ public class Guestbookcontroller {
 		System.out.println("Guestbookcontroller.remove()");
 		System.out.println(guestbookVO);
 		
-		GuestbookDAO guestbookDAO = new GuestbookDAO();
-		int count = guestbookDAO.guestbookDelete(guestbookVO);
+		//GuestbookService guestbookService = new GuestbookService();
+		guestbookService.exeGuestbookRemove(guestbookVO);
 		
 		return "redirect:/list";
 	}
