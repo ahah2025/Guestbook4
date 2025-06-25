@@ -11,7 +11,6 @@ import com.javaex.vo.GuestbookVO;
 @Service
 public class GuestbookService {
 
-	//비즈니스 로직
 	//필드
 	@Autowired
 	private GuestbookDAO guestbookDAO;

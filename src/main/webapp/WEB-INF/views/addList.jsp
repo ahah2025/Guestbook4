@@ -29,24 +29,19 @@
 		</form>
 		<br>
 		
-		<c:if test="${true}">
-			${requestScope.glist}
-		</c:if>
-		${requestScope.gList}
-		
-		<c:forEach items="${requestScope.gList} " var="gusetbookVO">
+		<c:forEach items="${requestScope.glist}" var="gusetbookVO">
 			<table border="1" width="540px">
 				<tr>
 					<td>[${gusetbookVO.no}]</td>
 					<td>${gusetbookVO.name}</td>
-					<td>${gusetbookVO.regdate}</td>
+					<td>${gusetbookVO.regDate}</td>
 					
 					<td>
 						<a href="${pageContext.request.contextPath}/rform?no=${gusetbookVO.no}">삭제</a>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4">${guestbookVO.content}</td>
+					<td colspan="4">${gusetbookVO.content}</td>
 				</tr>
 			</table>
 			<br>

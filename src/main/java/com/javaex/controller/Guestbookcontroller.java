@@ -27,14 +27,12 @@ public class Guestbookcontroller {
 	public String list(Model model) {
 		System.out.println("Guestbookcontroller.list()");
 		
-		//service
-		
-		
+		//@Autowired
 		//guestbookService 메모리에 올려주세요
-		//주소 0x333 주입 해주세요
+		//주소0x333 주입 해주세요
 		//GuestbookService guestbookService = new GuestbookService();
 		List<GuestbookVO> guestbookList = guestbookService.exeGetGuestbookList();
-		
+		System.out.println(guestbookList);
 		//*Model개념
 		//DispatcherServlet 야!!
 		//request의 어트리뷰트영역에
