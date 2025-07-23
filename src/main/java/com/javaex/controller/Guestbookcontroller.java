@@ -48,7 +48,7 @@ public class Guestbookcontroller {
 	}
 	
 	//-방명록 글 저장
-	@RequestMapping(value="add",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/add",method= {RequestMethod.GET,RequestMethod.POST})
 	public String add(@ModelAttribute GuestbookVO guestbookVO) {
 					  //DispatcherServlet 야!!  Request 파라미터 값을 꺼내서
 					  //GuestbookVO로 묶어줘	
