@@ -19,6 +19,7 @@ public class Guestbookcontroller {
 	@Autowired
 	private GuestbookService guestbookService;
 	
+	//서버포트 : 8880 //////////////////////////////////////////////////////////////
 	//생성자
 	//메소드 gs
 	//메소드일반
