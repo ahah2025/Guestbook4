@@ -24,7 +24,7 @@
 		<!-- 태그가 아닌 부등호를 적용하게 해주려면 	"<![CDATA[" 커리문작성 ]]> -->
 		<![CDATA[
 			insert into guestbook
-			values(null, #{name} , #{password} , #{content} , now())
+			values(null, #{name} , #{password} , #{content} , #{reg_date})
 		]]>	
 	</insert>
 	
